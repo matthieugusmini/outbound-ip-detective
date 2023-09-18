@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: outbound-ip-detective
+  labels:
+    name: outbound-ip-detective
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: outbound-ip-detective
+  template:
+    metadata:
+      name: outbound-ip-detective
+      labels:
+        name: outbound-ip-detective
+    spec:
+      containers:
+        - name: outbound-ip-detective
+          image: simfy2602/outbound-ip-detective:latest
+          ports:
+            - containerPort: 8080
+          resources:
+            requests:
+              memory: 256Mi
+            limits:
+              memory: 512Mi
